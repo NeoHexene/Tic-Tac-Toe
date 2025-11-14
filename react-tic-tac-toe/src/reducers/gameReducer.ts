@@ -8,7 +8,7 @@ export interface GameState {
     step: number;
     xIsNext: boolean;
     scores: {X: number; O: number; draws: number};
-    settings: {ai: boolean; aiPlayer: player; difficult: 'easy' | 'medium' | 'hard'};
+    settings: {ai: boolean; aiPlayer: player; difficulty: string | 'easy' | 'medium' | 'hard'};
 }
 
 export type action =
@@ -23,7 +23,7 @@ export const initialState: GameState = {
     step: 0,
     xIsNext: true,
     scores: {X: 0, O: 0, draws: 0},
-    settings: {ai: true, aiPlayer: 'O', difficult: 'medium'}
+    settings: {ai: true, aiPlayer: 'O', difficulty: 'medium'}
 };
 
 export default function gameReducer(state: GameState, action: action): GameState {

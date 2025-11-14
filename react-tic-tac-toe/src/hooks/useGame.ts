@@ -20,4 +20,24 @@ export default function useGame() {
     const play = useCallback((squares: GameState['history'][0], isDraw = false) => {
         dispatch({type: 'PLAY', squares, isDraw});
     }, []);
+
+    const jump = useCallback((step: number) => {
+        dispatch({type: 'JUMP', step});
+    }, []);
+
+    const reset = useCallback(() => {
+        dispatch({type: 'RESET'});
+    }, []);
+
+    const setSettings = useCallback((settings: Partial<GameState['settings']>) => {
+        dispatch({type: 'SET_SETTINGS', settings});
+    }, []);
+
+    return {
+        state,
+        play,
+        jump,
+        reset,
+        setSettings
+    };
 }
