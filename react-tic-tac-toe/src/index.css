@@ -2,19 +2,287 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global body styling */
+/* Design tokens */
+:root {
+  --bg-dark: #0f172a;
+  --bg-card: #1e293b;
+  --accent: #06b6d4;
+  --accent-hover: #0891b2;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border: #334155;
+  --success: #10b981;
+}
+
+/* Base styles */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  @apply bg-[#0f0f0f] text-white m-0;
+  @apply bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
 }
 
-/* Prevent layout constraints from Vite defaults */
 #root {
-  @apply w-full h-full;
+  width: 100%;
+  max-width: 1400px;
 }
 
-/* Smooth rendering */
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* App container - Modern glassmorphism card */
+.app {
+  @apply w-full bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-8;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
+@media (min-width: 768px) {
+  .app {
+    grid-template-columns: 1fr 380px;
+    gap: 3rem;
+  }
+}
+
+/* Game area */
+.game-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Board - Proper 3x3 grid */
+.board {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-rows: repeat(3, 1fr) !important;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* Square - Modern interactive design */
+.square,
+button[aria-label^="square-"] {
+  @apply bg-white/10 border-2 border-white/20 rounded-xl flex items-center justify-center text-5xl font-bold cursor-pointer select-none transition-all duration-200;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  min-width: 100px;
+  min-height: 100px;
+  transform-origin: center;
+  backdrop-filter: blur(10px);
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.square:hover:not(:disabled) {
+  @apply bg-white/20 border-white/30 scale-105 shadow-xl;
+  transform: translateY(-4px);
+}
+
+.square:active:not(:disabled) {
+  @apply scale-100;
+  transform: translateY(-2px);
+}
+
+.square:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* X and O colors */
+.square:not(:empty) {
+  animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Winning line highlight */
+.square.winner {
+  @apply bg-emerald-500/30 border-emerald-400/50;
+  animation: winPulse 1s ease-in-out infinite;
+}
+
+@keyframes winPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+  }
+}
+
+/* Buttons */
+.btn {
+  @apply px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 border;
+  @apply bg-white/10 border-white/20 text-white hover:bg-white/20 hover:border-white/30;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.btn.primary {
+  @apply bg-gradient-to-r from-purple-500 to-pink-500 border-transparent hover:from-purple-600 hover:to-pink-600;
+  @apply text-white shadow-lg hover:shadow-xl;
+}
+
+.btn:active:not(:disabled) {
+  @apply scale-95;
+}
+
+/* Controls section */
+.controls {
+  @apply space-y-4;
+}
+
+/* Side panel */
+.side-panel {
+  @apply space-y-6;
+}
+
+/* Section containers */
+.section {
+  @apply bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10;
+}
+
+/* Move list */
+.moves {
+  @apply bg-white/5 backdrop-blur-sm rounded-xl p-3 max-h-80 overflow-auto border border-white/10;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.moves::-webkit-scrollbar {
+  width: 6px;
+}
+
+.moves::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.moves::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.move {
+  @apply px-3 py-2 rounded-lg text-sm cursor-pointer transition-all duration-200;
+  @apply text-white/70 hover:bg-white/10 hover:text-white;
+}
+
+.move.active {
+  @apply bg-purple-500/30 text-white border border-purple-400/30;
+}
+
+/* Status display */
+.status-display {
+  @apply text-2xl font-bold text-center text-white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Scores display */
+.scores-grid {
+  @apply grid grid-cols-3 gap-4 text-center;
+}
+
+.score-item {
+  @apply bg-white/5 rounded-lg p-3 border border-white/10;
+}
+
+.score-value {
+  @apply text-3xl font-bold;
+}
+
+.score-label {
+  @apply text-xs text-white/60 mt-1;
+}
+
+/* Settings section */
+.settings-group {
+  @apply space-y-3;
+}
+
+.settings-label {
+  @apply text-sm font-medium text-white/80 mb-2 block;
+}
+
+select.btn {
+  @apply cursor-pointer appearance-none bg-white/10 border-white/20;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .square {
+    @apply text-4xl;
+  }
+  
+  .board {
+    max-width: 340px;
+  }
+  
+  .app {
+    @apply p-5;
+  }
+}
+
+/* Utility animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Header styling */
+h2, h3, h4 {
+  @apply text-white font-bold;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-xl;
+}
+
+h4 {
+  @apply text-base;
+}
