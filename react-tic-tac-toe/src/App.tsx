@@ -1,8 +1,6 @@
-import React, { useMemo, useEffect } from 'react';
+import { useEffect } from 'react';
 import useGame from './hooks/useGame';
 import Board from './components/Board';
-import Controls from './components/Controls';
-import MoveList from './components/MoveList';
 import { calculateWinner, isBoardFull } from './utils/gameUtils';
 import { findBestMove } from './ai/minimax';
 
@@ -13,13 +11,6 @@ export default function App() {
   const winnerRes = calculateWinner(current);
   const isDraw = !winnerRes && isBoardFull(current);
   const status = winnerRes ? `Winner: ${winnerRes.winner}` : isDraw ? 'Draw!' : `Next: ${xIsNext ? 'X' : 'O'}`;
-
-  const lastMoveIndex = useMemo(() => {
-    if (step === 0) return null;
-    const prev = history[step - 1];
-    for (let i = 0; i < 9; i++) if (prev[i] !== current[i]) return i;
-    return null;
-  }, [history, step, current]);
 
   function handleSquareClick(i: number) {
     if (current[i] || winnerRes) return;
@@ -96,7 +87,7 @@ export default function App() {
           marginBottom: '32px',
           textShadow: '0 4px 20px rgba(0, 0, 0, 0.3)'
         }}>
-          🎮 Tic-Tac-Toe AI
+          🎮 Tic-Tac-Toe
         </h1>
 
         <div style={{
