@@ -2,7 +2,7 @@
 
 A modern, interactive Tic-Tac-Toe game built with React and TypeScript. Clean code, smart game logic, and responsive design.
 
-## 🚀 [https://www.youtube.com/watch?v=TsJbLFxsGIo](#)
+## 🚀 [Live Demo](https://www.youtube.com/watch?v=TsJbLFxsGIo)
 
 ---
 
@@ -19,7 +19,6 @@ Classic Tic-Tac-Toe game with a modern twist. Built to demonstrate React fundame
 - **Smart Game Logic** - Efficient win detection algorithm checking 8 winning patterns
 - **Time Travel** - Navigate through game history with move replay
 - **Type-Safe** - Full TypeScript implementation for robust code
-- **Responsive UI** - Seamless experience across all devices
 - **State Management** - React hooks for efficient state handling
 
 ---
@@ -48,7 +47,7 @@ const calculateWinner = (squares: (string | null)[]): string | null => {
 ### State Management
 - Used `useState` hooks for board state, player turns, and game history
 - Implemented immutable state updates for predictable behavior
-- Created snapshot-based history for time travel feature
+- Created snapshot-based history for the time travel feature
 
 ### Component Architecture
 - **Game Component** - Main orchestrator, handles game logic
@@ -72,14 +71,13 @@ const calculateWinner = (squares: (string | null)[]): string | null => {
 git clone https://github.com/NeoHexene/Tic-Tac-Toe.git
 cd Tic-Tac-Toe/react-tic-tac-toe
 npm install
-npm start
+npm run dev
 ```
 
 ---
 
 ## 📈 Future Enhancements
 
-- AI opponent with adjustable difficulty (minimax algorithm)
 - Online multiplayer using WebSockets
 - Advanced analytics (win rate tracking, move patterns)
 - Custom board sizes (4×4, 5×5)
@@ -101,4 +99,4 @@ MIT License - See [LICENSE](LICENSE) file
 
 ---
 
-**Built by [@NeoHexene](https://github.com/NeoHexene)** | *Star ⭐ if you find this interesting!*
+**Built by [Aniruddha](https://github.com/NeoHexene)** | *Star ⭐ if you find this interesting!*
