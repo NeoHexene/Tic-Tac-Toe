@@ -1,6 +1,6 @@
 # 🎮 Tic-Tac-Toe Game
 
-A modern, interactive Tic-Tac-Toe game built with React and TypeScript. Clean code, smart game logic, and responsive design.
+A modern, interactive Tic-Tac-Toe game built with React and TypeScript. Clean code, and smart game logic.
 
 ## 🚀 [Live Demo](https://www.youtube.com/watch?v=TsJbLFxsGIo)
 
