@@ -10,7 +10,7 @@ A modern, interactive Tic-Tac-Toe game built with React and TypeScript. Clean co
 
 Classic Tic-Tac-Toe game with a modern twist. Built to demonstrate React fundamentals, TypeScript integration, and clean component architecture. Features game state management, win detection algorithms, and move history functionality.
 
-**Tech Stack**: React 18+ • TypeScript • CSS3 • HTML5
+**Tech Stack**: React • TypeScript • CSS3 • HTML5
 
 ---
 
