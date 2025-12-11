@@ -1,12 +1,12 @@
 # 🎮 Tic-Tac-Toe Game
 
-A modern, interactive Tic-Tac-Toe game built with React and TypeScript. Clean code, and smart game logic.
+A modern, interactive Tic-Tac-Toe game built with React and TypeScript. Clean code and smart game logic.
 
-## 🚀 [Live Demo](https://www.youtube.com/watch?v=TsJbLFxsGIo)
+## [Live Demo](https://www.youtube.com/watch?v=TsJbLFxsGIo)
 
 ---
 
-## 📌 Overview
+## Overview
 
 Classic Tic-Tac-Toe game with a modern twist. Built to demonstrate React fundamentals, TypeScript integration, and clean component architecture. Features game state management, win detection algorithms, and move history functionality.
 
@@ -14,7 +14,7 @@ Classic Tic-Tac-Toe game with a modern twist. Built to demonstrate React fundame
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - **Smart Game Logic** - Efficient win detection algorithm checking 8 winning patterns
 - **Time Travel** - Navigate through game history with move replay
@@ -23,7 +23,7 @@ Classic Tic-Tac-Toe game with a modern twist. Built to demonstrate React fundame
 
 ---
 
-## 🔧 Technical Highlights
+## Technical Highlights
 
 ### Win Detection Algorithm
 ```typescript
@@ -57,7 +57,7 @@ const calculateWinner = (squares: (string | null)[]): string | null => {
 
 ---
 
-## 💡 Key Problem Solved
+## Key Problem Solved
 
 **Challenge**: Implementing efficient game state history for "time travel" feature without performance degradation.
 
@@ -65,7 +65,7 @@ const calculateWinner = (squares: (string | null)[]): string | null => {
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 git clone https://github.com/NeoHexene/Tic-Tac-Toe.git
@@ -76,7 +76,7 @@ npm run dev
 
 ---
 
-## 📈 Future Enhancements
+## Future Enhancements
 
 - Online multiplayer using WebSockets
 - Advanced analytics (win rate tracking, move patterns)
@@ -84,19 +84,9 @@ npm run dev
 
 ---
 
-## 🎯 What I Learned
+## What I Learned
 
 - **React Patterns** - Component composition, hooks, and state lifting
 - **TypeScript** - Interface design, type inference, and generic types
 - **Algorithm Design** - Efficient win detection with O(1) space complexity
 - **Clean Code** - Separation of concerns and reusable components
-
----
-
-## 📄 License
-
-MIT License - See [LICENSE](LICENSE) file
-
----
-
-**Built by [Aniruddha](https://github.com/NeoHexene)** | *Star ⭐ if you find this interesting!*
